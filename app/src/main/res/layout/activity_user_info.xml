@@ -42,7 +42,25 @@
                 android:text="kirimin"
                 android:textSize="@dimen/abc_text_size_body_1_material"
                 android:textColor="@color/grey_700"
-                android:layout_marginTop="@dimen/spacing_medium" />
+                android:layout_marginTop="@dimen/spacing_small" />
+
+            <TextView
+                android:id="@+id/userInfoLocationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tokyo, Japan"
+                android:textSize="@dimen/abc_text_size_body_1_material"
+                android:textColor="@color/grey_700"
+                android:layout_marginTop="@dimen/spacing_large" />
+
+            <TextView
+                android:id="@+id/userInfoCompanyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Github"
+                android:textSize="@dimen/abc_text_size_body_1_material"
+                android:textColor="@color/grey_700"
+                android:layout_marginTop="@dimen/spacing_small" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

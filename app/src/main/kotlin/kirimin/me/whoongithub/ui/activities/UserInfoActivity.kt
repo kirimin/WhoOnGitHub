@@ -23,6 +23,8 @@ public class UserInfoActivity : ActionBarActivity() {
 
         val userInfoText = findViewById(R.id.userInfoNameText) as TextView
         val idText = findViewById(R.id.userInfoIdText) as TextView
+        val locationText = findViewById(R.id.userInfoLocationText) as TextView
+        val companyText = findViewById(R.id.userInfoCompanyText) as TextView
         val iconImage = findViewById(R.id.userInfoIconImage) as ImageView
         UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
                 .subscribeOn(Schedulers.newThread())
@@ -31,6 +33,8 @@ public class UserInfoActivity : ActionBarActivity() {
                         { user ->
                             userInfoText.setText(user.name)
                             idText.setText(user.login)
+                            locationText.setText(user.location)
+                            companyText.setText(user.company)
                             Picasso.with(this).load(user.avatarUrl).into(iconImage)
                         },
                         { e -> e.printStackTrace() })
