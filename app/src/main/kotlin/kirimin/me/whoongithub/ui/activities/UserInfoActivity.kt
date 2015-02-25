@@ -18,10 +18,13 @@ public class UserInfoActivity : ActionBarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
+        val id = "kirimin"
+        getSupportActionBar().setTitle(id)
+
         val userInfoText = findViewById(R.id.userInfoNameText) as TextView
         val idText = findViewById(R.id.userInfoIdText) as TextView
         val iconImage = findViewById(R.id.userInfoIconImage) as ImageView
-        UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), "kirimin")
+        UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

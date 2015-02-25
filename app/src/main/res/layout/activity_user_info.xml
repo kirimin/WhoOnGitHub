@@ -2,26 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/spacing_large"
+    android:paddingRight="@dimen/spacing_large"
+    android:paddingTop="@dimen/spacing_large"
+    android:paddingBottom="@dimen/spacing_large"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/userInfoIconImage"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/userInfoNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/userInfoIconImage"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/userInfoIdText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/spacing_large">
 
+            <TextView
+                android:id="@+id/userInfoNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="きりみん"
+                android:textSize="@dimen/abc_text_size_title_material"
+                android:textStyle="bold"
+                android:textColor="@color/grey_900" />
+
+            <TextView
+                android:id="@+id/userInfoIdText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kirimin"
+                android:textSize="@dimen/abc_text_size_body_1_material"
+                android:textColor="@color/grey_700"
+                android:layout_marginTop="@dimen/spacing_medium" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
