@@ -26,6 +26,8 @@ public class UserInfoActivity : ActionBarActivity() {
         val locationText = findViewById(R.id.userInfoLocationText) as TextView
         val companyText = findViewById(R.id.userInfoCompanyText) as TextView
         val iconImage = findViewById(R.id.userInfoIconImage) as ImageView
+        val linkText = findViewById(R.id.userInfoLinkText) as TextView
+        val mailText = findViewById(R.id.userInfoMailText) as TextView
         UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -35,7 +37,10 @@ public class UserInfoActivity : ActionBarActivity() {
                             idText.setText(user.login)
                             locationText.setText(user.location)
                             companyText.setText(user.company)
-                            Picasso.with(this).load(user.avatarUrl).into(iconImage)
+                            Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
+
+                            linkText.setText(user.blog)
+                            mailText.setText(user.email)
                         },
                         { e -> e.printStackTrace() })
     }
