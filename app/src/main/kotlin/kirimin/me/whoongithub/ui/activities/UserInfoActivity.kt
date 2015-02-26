@@ -14,6 +14,12 @@ import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import rx.subscriptions.CompositeSubscription
 import butterknife.bindView
+import kirimin.me.whoongithub.network.apis.RepositoryApi
+import java.util.HashMap
+import java.util.ArrayList
+import java.util.HashSet
+import rx.Observable
+import kirimin.me.whoongithub.models.Repository
 
 public class UserInfoActivity : ActionBarActivity() {
 
@@ -33,21 +39,28 @@ public class UserInfoActivity : ActionBarActivity() {
         val id = "kirimin"
         getSupportActionBar().setTitle(id)
 
-        subscriptions.add(UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
+        val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
+        val repositoryRequest = RepositoryApi.request(RequestQueueSingleton.get(getApplicationContext()), id).toList()
+        subscriptions.add(Observable
+                .zip(userRequest, repositoryRequest, { user, repositories -> Pair(user, repositories) })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { user ->
-                            userNameText.setText(user.name)
-                            userIdText.setText(user.login)
-                            locationText.setText(user.location)
-                            companyText.setText(user.company)
-                            Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
+                .subscribe({ response ->
+                    val user = response.first
+                    val repositories = response.second
+                    userNameText.setText(user.name)
+                    userIdText.setText(user.login)
+                    locationText.setText(user.location)
+                    companyText.setText(user.company)
+                    Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
 
-                            linkText.setText(user.blog)
-                            mailText.setText(user.email)
-                        },
-                        { e -> e.printStackTrace() }));
+                    linkText.setText(user.blog)
+                    mailText.setText(user.email)
+
+                    repositories
+                            .groupBy { repo -> repo.language }
+                            .forEach { lang -> Log.d("count", lang.getKey() + ":" + lang.getValue().count()) }
+                }, {}))
     }
 
     override fun onDestroy() {
