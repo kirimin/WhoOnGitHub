@@ -13,8 +13,17 @@ import android.widget.TextView
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import rx.subscriptions.CompositeSubscription
+import butterknife.bindView
 
 public class UserInfoActivity : ActionBarActivity() {
+
+    val userInfoText: TextView by bindView(R.id.userInfoNameText)
+    val idText: TextView by bindView(R.id.userInfoIdText)
+    val locationText: TextView by bindView(R.id.userInfoLocationText)
+    val companyText: TextView by bindView(R.id.userInfoCompanyText)
+    val iconImage: ImageView by bindView(R.id.userInfoIconImage)
+    val linkText: TextView by bindView(R.id.userInfoLinkText)
+    val mailText: TextView by bindView(R.id.userInfoMailText)
 
     private val subscriptions = CompositeSubscription();
 
@@ -24,13 +33,6 @@ public class UserInfoActivity : ActionBarActivity() {
         val id = "kirimin"
         getSupportActionBar().setTitle(id)
 
-        val userInfoText = findViewById(R.id.userInfoNameText) as TextView
-        val idText = findViewById(R.id.userInfoIdText) as TextView
-        val locationText = findViewById(R.id.userInfoLocationText) as TextView
-        val companyText = findViewById(R.id.userInfoCompanyText) as TextView
-        val iconImage = findViewById(R.id.userInfoIconImage) as ImageView
-        val linkText = findViewById(R.id.userInfoLinkText) as TextView
-        val mailText = findViewById(R.id.userInfoMailText) as TextView
         subscriptions.add(UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
