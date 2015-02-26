@@ -12,8 +12,11 @@ import rx.android.schedulers.AndroidSchedulers
 import android.widget.TextView
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import rx.subscriptions.CompositeSubscription
 
 public class UserInfoActivity : ActionBarActivity() {
+
+    private val subscriptions = CompositeSubscription();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +31,7 @@ public class UserInfoActivity : ActionBarActivity() {
         val iconImage = findViewById(R.id.userInfoIconImage) as ImageView
         val linkText = findViewById(R.id.userInfoLinkText) as TextView
         val mailText = findViewById(R.id.userInfoMailText) as TextView
-        UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
+        subscriptions.add(UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -42,6 +45,11 @@ public class UserInfoActivity : ActionBarActivity() {
                             linkText.setText(user.blog)
                             mailText.setText(user.email)
                         },
-                        { e -> e.printStackTrace() })
+                        { e -> e.printStackTrace() }));
+    }
+
+    override fun onDestroy() {
+        subscriptions.unsubscribe()
+        super.onDestroy()
     }
 }
