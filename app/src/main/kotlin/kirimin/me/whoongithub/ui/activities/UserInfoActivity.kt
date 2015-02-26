@@ -17,8 +17,8 @@ import butterknife.bindView
 
 public class UserInfoActivity : ActionBarActivity() {
 
-    val userInfoText: TextView by bindView(R.id.userInfoNameText)
-    val idText: TextView by bindView(R.id.userInfoIdText)
+    val userNameText: TextView by bindView(R.id.userInfoNameText)
+    val userIdText: TextView by bindView(R.id.userInfoIdText)
     val locationText: TextView by bindView(R.id.userInfoLocationText)
     val companyText: TextView by bindView(R.id.userInfoCompanyText)
     val iconImage: ImageView by bindView(R.id.userInfoIconImage)
@@ -38,8 +38,8 @@ public class UserInfoActivity : ActionBarActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { user ->
-                            userInfoText.setText(user.name)
-                            idText.setText(user.login)
+                            userNameText.setText(user.name)
+                            userIdText.setText(user.login)
                             locationText.setText(user.location)
                             companyText.setText(user.company)
                             Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
