@@ -114,6 +114,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="Repositories"
+                android:textSize="@dimen/abc_text_size_headline_material"
+                android:layout_marginBottom="@dimen/spacing_small" />
+
+            <LinearLayout
+                android:id="@+id/userInfoRepositoryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

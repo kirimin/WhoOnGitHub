@@ -28,6 +28,7 @@ public class UserInfoActivity : ActionBarActivity() {
     val linkText: TextView by bindView(R.id.userInfoLinkText)
     val mailText: TextView by bindView(R.id.userInfoMailText)
     val languageLayout: LinearLayout by bindView(R.id.userInfoLanguageLayout)
+    val repositoryLayout: LinearLayout by bindView(R.id.userInfoRepositoryLayout)
 
     private val subscriptions = CompositeSubscription();
 
@@ -68,6 +69,12 @@ public class UserInfoActivity : ActionBarActivity() {
                                 languageStartCountText.setText(language.second.map { repo -> repo.stargazersCount }.sum().toString())
                                 languageLayout.addView(languageView)
                             }
+                    repositories.forEach { repo ->
+                        val repositoryView = inflater.inflate(R.layout.activity_user_info_repositories, null) as LinearLayout
+                        val repositoryNameText = repositoryView.findViewById(R.id.userInfoRepositoryName) as TextView
+                        repositoryNameText.setText(repo.name)
+                        repositoryLayout.addView(repositoryView)
+                    }
                 }, { e ->
                     e.printStackTrace()
                 }))
