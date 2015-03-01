@@ -3,7 +3,6 @@ package kirimin.me.whoongithub.ui.activities
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import kirimin.me.whoongithub.R
-import kirimin.me.whoongithub.models.User
 import kirimin.me.whoongithub.network.apis.UsersApi
 import kirimin.me.whoongithub.network.RequestQueueSingleton
 import rx.schedulers.Schedulers
@@ -14,11 +13,7 @@ import com.squareup.picasso.Picasso
 import rx.subscriptions.CompositeSubscription
 import butterknife.bindView
 import kirimin.me.whoongithub.network.apis.RepositoryApi
-import java.util.HashMap
-import java.util.ArrayList
-import java.util.HashSet
 import rx.Observable
-import kirimin.me.whoongithub.models.Repository
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.view.View
