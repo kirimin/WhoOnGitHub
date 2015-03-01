@@ -107,6 +107,7 @@
                 android:layout_marginTop="@dimen/spacing_large"
                 android:text="Languages"
                 android:textSize="@dimen/abc_text_size_headline_material"
+                android:textColor="@color/grey_900"
                 android:layout_marginBottom="@dimen/spacing_small" />
 
             <LinearLayout
@@ -121,6 +122,7 @@
                 android:layout_marginTop="@dimen/spacing_large"
                 android:text="Repositories"
                 android:textSize="@dimen/abc_text_size_headline_material"
+                android:textColor="@color/grey_900"
                 android:layout_marginBottom="@dimen/spacing_small" />
 
             <LinearLayout
