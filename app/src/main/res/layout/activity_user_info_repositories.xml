@@ -5,13 +5,31 @@
     android:orientation="vertical"
     android:paddingBottom="@dimen/spacing_medium">
 
-
-    <TextView
-        android:id="@+id/userInfoRepositoryName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/grey_700"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/userInfoRepositoryName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/userInfoRepositoryStarCount"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@android:drawable/star_on"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:singleLine="true"
+            android:ellipsize="end" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/userInfoRepositoryDescription"
@@ -19,4 +37,5 @@
         android:layout_height="wrap_content"
         android:textColor="@color/grey_500"
         android:textSize="@dimen/abc_text_size_small_material" />
+
 </LinearLayout>

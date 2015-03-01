@@ -74,8 +74,10 @@ public class UserInfoActivity : ActionBarActivity() {
                                 val repositoryView = inflater.inflate(R.layout.activity_user_info_repositories, null) as LinearLayout
                                 val repositoryNameText = repositoryView.findViewById(R.id.userInfoRepositoryName) as TextView
                                 val repositoryDescriptionText = repositoryView.findViewById(R.id.userInfoRepositoryDescription) as TextView
+                                val repositoryStarCountText = repositoryView.findViewById(R.id.userInfoRepositoryStarCount) as TextView
                                 repositoryNameText.setText(repo.name)
                                 repositoryDescriptionText.setText(repo.description)
+                                repositoryStarCountText.setText(repo.stargazersCount.toString())
                                 repositoryLayout.addView(repositoryView)
                             }
                 }, { e ->
