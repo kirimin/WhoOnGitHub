@@ -53,8 +53,8 @@ public class UserInfoActivity : ActionBarActivity() {
                     val repositories = response.second
                     userNameText.setText(user.name)
                     userIdText.setText(user.login)
-                    locationText.setText(user.location)
-                    companyText.setText(user.company)
+                    locationText.setText(if (!user.location.equals("null")) user.location else "")
+                    companyText.setText(if (!user.company.equals("null")) user.company else "")
                     Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
 
                     linkText.setText(user.blog)
@@ -74,7 +74,9 @@ public class UserInfoActivity : ActionBarActivity() {
                                 languageStartCountText.setText(lang.getValue().map { repo -> repo.stargazersCount }.sum().toString())
                                 languageLayout.addView(languageView)
                             }
-                }, { e -> e.printStackTrace() }))
+                }, { e ->
+                    e.printStackTrace()
+                }))
     }
 
     override fun onDestroy() {
