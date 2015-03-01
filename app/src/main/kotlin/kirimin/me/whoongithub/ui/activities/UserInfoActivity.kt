@@ -34,7 +34,7 @@ public class UserInfoActivity : ActionBarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
-        val id = "hotchemi"
+        val id = "kirimin"
         getSupportActionBar().setTitle(id)
 
         val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
