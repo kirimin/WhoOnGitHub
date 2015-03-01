@@ -10,22 +10,23 @@
         android:id="@+id/userInfoLanguageName"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Java"
         android:textSize="@dimen/abc_text_size_medium_material" />
 
     <TextView
         android:id="@+id/userInfoLanguageCount"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="2"
         android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:singleLine="true"
+        android:ellipsize="end" />
 
     <TextView
         android:id="@+id/userInfoLanguageStarCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="15"
         android:drawableLeft="@android:drawable/star_on"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:singleLine="true"
+        android:ellipsize="end" />
 </LinearLayout>
