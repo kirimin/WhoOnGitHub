@@ -20,6 +20,8 @@ import java.util.ArrayList
 import java.util.HashSet
 import rx.Observable
 import kirimin.me.whoongithub.models.Repository
+import android.view.LayoutInflater
+import android.widget.LinearLayout
 
 public class UserInfoActivity : ActionBarActivity() {
 
@@ -30,6 +32,7 @@ public class UserInfoActivity : ActionBarActivity() {
     val iconImage: ImageView by bindView(R.id.userInfoIconImage)
     val linkText: TextView by bindView(R.id.userInfoLinkText)
     val mailText: TextView by bindView(R.id.userInfoMailText)
+    val languageLayout: LinearLayout by bindView(R.id.userInfoLanguageLayout)
 
     private val subscriptions = CompositeSubscription();
 
@@ -57,10 +60,21 @@ public class UserInfoActivity : ActionBarActivity() {
                     linkText.setText(user.blog)
                     mailText.setText(user.email)
 
+                    val inflater = LayoutInflater.from(this);
                     repositories
+                            .filter { repo -> !repo.language.equals("null") }
                             .groupBy { repo -> repo.language }
-                            .forEach { lang -> Log.d("count", lang.getKey() + ":" + lang.getValue().count()) }
-                }, {}))
+                            .forEach { lang ->
+                                val languageView = inflater.inflate(R.layout.activity_user_info_language, null) as LinearLayout
+                                val languageNameText = languageView.findViewById(R.id.userInfoLanguageName) as TextView
+                                val languageCountText = languageView.findViewById(R.id.userInfoLanguageCount) as TextView
+                                val languageStartCountText = languageView.findViewById(R.id.userInfoLanguageStarCount) as TextView
+                                languageNameText.setText(lang.getKey())
+                                languageCountText.setText(lang.getValue().count().toString())
+                                languageStartCountText.setText(lang.getValue().map { repo -> repo.stargazersCount }.sum().toString())
+                                languageLayout.addView(languageView)
+                            }
+                }, { e -> e.printStackTrace() }))
     }
 
     override fun onDestroy() {

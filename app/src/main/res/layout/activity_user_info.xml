@@ -91,40 +91,9 @@
         android:layout_marginBottom="@dimen/spacing_small" />
 
     <LinearLayout
+        android:id="@+id/userInfoLanguageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/spacing_medium">
+        android:orientation="vertical" />
 
-        <TextView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:text="80%"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Java"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/spacing_medium">
-
-        <TextView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:text="20%"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kotlin"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-    </LinearLayout>
 </LinearLayout>

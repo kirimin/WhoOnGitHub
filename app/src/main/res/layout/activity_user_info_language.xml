@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/spacing_medium">
+
+
+    <TextView
+        android:id="@+id/userInfoLanguageName"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Java"
+        android:textSize="@dimen/abc_text_size_medium_material" />
+
+    <TextView
+        android:id="@+id/userInfoLanguageCount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
+        android:textSize="@dimen/abc_text_size_medium_material" />
+
+    <TextView
+        android:id="@+id/userInfoLanguageStarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15"
+        android:drawableLeft="@android:drawable/star_on"
+        android:textSize="@dimen/abc_text_size_medium_material" />
+</LinearLayout>
