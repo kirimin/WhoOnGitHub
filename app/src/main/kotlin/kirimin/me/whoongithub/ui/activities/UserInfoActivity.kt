@@ -34,7 +34,7 @@ public class UserInfoActivity : ActionBarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
-        val id = "kirimin"
+        val id = "hotchemi"
         getSupportActionBar().setTitle(id)
 
         val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
@@ -57,14 +57,15 @@ public class UserInfoActivity : ActionBarActivity() {
                     repositories
                             .filter { repo -> !repo.language.equals("null") }
                             .groupBy { repo -> repo.language }
-                            .forEach { lang ->
+                            .toList().sortDescendingBy { language -> language.second.count() }
+                            .forEach { language ->
                                 val languageView = inflater.inflate(R.layout.activity_user_info_language, null) as LinearLayout
                                 val languageNameText = languageView.findViewById(R.id.userInfoLanguageName) as TextView
                                 val languageCountText = languageView.findViewById(R.id.userInfoLanguageCount) as TextView
                                 val languageStartCountText = languageView.findViewById(R.id.userInfoLanguageStarCount) as TextView
-                                languageNameText.setText(lang.getKey())
-                                languageCountText.setText(lang.getValue().count().toString())
-                                languageStartCountText.setText(lang.getValue().map { repo -> repo.stargazersCount }.sum().toString())
+                                languageNameText.setText(language.first)
+                                languageCountText.setText(language.second.count().toString())
+                                languageStartCountText.setText(language.second.map { repo -> repo.stargazersCount }.sum().toString())
                                 languageLayout.addView(languageView)
                             }
                 }, { e ->
