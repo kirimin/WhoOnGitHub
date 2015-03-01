@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import kirimin.me.whoongithub.R
 import kirimin.me.whoongithub.models.User
-import android.util.Log
 import kirimin.me.whoongithub.network.apis.UsersApi
 import kirimin.me.whoongithub.network.RequestQueueSingleton
 import rx.schedulers.Schedulers
@@ -22,6 +21,7 @@ import rx.Observable
 import kirimin.me.whoongithub.models.Repository
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.view.View
 
 public class UserInfoActivity : ActionBarActivity() {
 
@@ -53,13 +53,11 @@ public class UserInfoActivity : ActionBarActivity() {
                     val repositories = response.second
                     userNameText.setText(user.name)
                     userIdText.setText(user.login)
-                    locationText.setText(if (!user.location.equals("null")) user.location else "")
-                    companyText.setText(if (!user.company.equals("null")) user.company else "")
+                    setTextAndToVisibleIfNotNull(locationText, user.location)
+                    setTextAndToVisibleIfNotNull(companyText, user.company)
+                    setTextAndToVisibleIfNotNull(linkText, user.blog)
+                    setTextAndToVisibleIfNotNull(mailText, user.email)
                     Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
-
-                    linkText.setText(user.blog)
-                    mailText.setText(user.email)
-
                     val inflater = LayoutInflater.from(this);
                     repositories
                             .filter { repo -> !repo.language.equals("null") }
@@ -82,5 +80,11 @@ public class UserInfoActivity : ActionBarActivity() {
     override fun onDestroy() {
         subscriptions.unsubscribe()
         super.onDestroy()
+    }
+
+    private fun setTextAndToVisibleIfNotNull(textView: TextView, text: String) {
+        if (text.equals("null")) return
+        textView.setText(text)
+        textView.setVisibility(View.VISIBLE)
     }
 }

@@ -39,7 +39,6 @@
                         android:id="@+id/userInfoNameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="きりみん"
                         android:textSize="@dimen/abc_text_size_title_material"
                         android:textStyle="bold"
                         android:textColor="@color/grey_900" />
@@ -48,7 +47,6 @@
                         android:id="@+id/userInfoIdText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="kirimin"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/grey_700"
                         android:layout_marginTop="@dimen/spacing_small" />
@@ -57,19 +55,19 @@
                         android:id="@+id/userInfoLocationText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tokyo, Japan"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/grey_700"
-                        android:layout_marginTop="@dimen/spacing_large" />
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/userInfoCompanyText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Github"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/grey_700"
-                        android:layout_marginTop="@dimen/spacing_small" />
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -77,19 +75,19 @@
                 android:id="@+id/userInfoLinkText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="http://kirimin.me"
                 android:textSize="@dimen/abc_text_size_title_material"
                 android:autoLink="web"
-                android:layout_marginTop="@dimen/spacing_large" />
+                android:layout_marginTop="@dimen/spacing_large"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/userInfoMailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cc@kirimin.me"
                 android:textSize="@dimen/abc_text_size_title_material"
                 android:autoLink="email"
-                android:layout_marginTop="@dimen/spacing_small" />
+                android:layout_marginTop="@dimen/spacing_small"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
