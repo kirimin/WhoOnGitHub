@@ -17,8 +17,18 @@ import rx.Observable
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.view.View
+import android.view.MenuItem
+import android.widget.Toast
 
 public class UserInfoActivity : ActionBarActivity() {
+
+    class object {
+        fun getBundle(id: String): Bundle {
+            val bundle = Bundle()
+            bundle.putString("id", id)
+            return bundle
+        }
+    }
 
     val userNameText: TextView by bindView(R.id.userInfoNameText)
     val userIdText: TextView by bindView(R.id.userInfoIdText)
@@ -29,14 +39,18 @@ public class UserInfoActivity : ActionBarActivity() {
     val mailText: TextView by bindView(R.id.userInfoMailText)
     val languageLayout: LinearLayout by bindView(R.id.userInfoLanguageLayout)
     val repositoryLayout: LinearLayout by bindView(R.id.userInfoRepositoryLayout)
+    val parentLayout: LinearLayout by bindView(R.id.userInfoParentLayout)
 
     private val subscriptions = CompositeSubscription();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
-        val id = "kirimin"
-        getSupportActionBar().setTitle(id)
+        val id = getIntent().getStringExtra("id")
+        val actionBar = getSupportActionBar()
+        actionBar.setTitle(id)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeButtonEnabled(true)
 
         val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
         val repositoryRequest = RepositoryApi.request(RequestQueueSingleton.get(getApplicationContext()), id, 1).toList()
@@ -47,6 +61,7 @@ public class UserInfoActivity : ActionBarActivity() {
                 .subscribe({ response ->
                     val user = response.first
                     val repositories = response.second
+                    parentLayout.setVisibility(View.VISIBLE)
                     userNameText.setText(user.name)
                     userIdText.setText(user.login)
                     setTextAndToVisibleIfNotNull(locationText, user.location)
@@ -84,13 +99,21 @@ public class UserInfoActivity : ActionBarActivity() {
                                 repositoryLayout.addView(repositoryView)
                             }
                 }, { e ->
-                    e.printStackTrace()
+                    Toast.makeText(getApplicationContext(), "Error. Username does not exist?", Toast.LENGTH_SHORT).show()
+                    finish()
                 }))
     }
 
     override fun onDestroy() {
         subscriptions.unsubscribe()
         super.onDestroy()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (android.R.id.home == item.getItemId()) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setTextAndToVisibleIfNotNull(textView: TextView, text: String) {

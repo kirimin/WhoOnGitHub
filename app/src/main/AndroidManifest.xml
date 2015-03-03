@@ -10,14 +10,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activities.UserInfoActivity"
+            android:name=".ui.activities.TopActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".ui.activities.UserInfoActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/spacing_large"
+    android:paddingRight="@dimen/spacing_large"
+    android:paddingTop="@dimen/spacing_large"
+    android:paddingBottom="@dimen/spacing_large">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username:"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:layout_marginRight="@dimen/spacing_small" />
+
+        <EditText
+            android:id="@+id/topUserNameEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:hint="kirimin"
+            android:textColorHint="@color/grey_300"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/topUserNameShowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textColor="@color/grey_700" />
+    </LinearLayout>
+
+</LinearLayout>
