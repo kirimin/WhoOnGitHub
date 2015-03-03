@@ -1,3 +1,3 @@
 # WhoOnGitHub
-GitHub Profile Viewer.
+GitHub Profile Viewer.  
 ![screenshot](https://pbs.twimg.com/media/B_LBC8DU8AAmqoy.png)
