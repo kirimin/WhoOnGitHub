@@ -78,9 +78,9 @@ public class UserInfoActivity : ActionBarActivity() {
                                 val repositoryStarCountText = repositoryView.findViewById(R.id.userInfoRepositoryStarCount) as TextView
                                 val repositoryLanguageText = repositoryView.findViewById(R.id.userInfoRepositoryLanguage) as TextView
                                 repositoryNameText.setText(repo.name)
-                                setTextAndToVisibleIfNotNull(repositoryDescriptionText, repo.description)
                                 repositoryStarCountText.setText(repo.stargazersCount.toString())
                                 repositoryLanguageText.setText(if (!repo.language.equals("null")) repo.language else "")
+                                setTextAndToVisibleIfNotNull(repositoryDescriptionText, repo.description)
                                 repositoryLayout.addView(repositoryView)
                             }
                 }, { e ->
