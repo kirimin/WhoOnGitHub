@@ -70,6 +70,7 @@ public class UserInfoActivity : ActionBarActivity() {
                                 languageLayout.addView(languageView)
                             }
                     repositories
+                            .sortDescendingBy { repo -> repo.stargazersCount }
                             .forEach { repo ->
                                 val repositoryView = inflater.inflate(R.layout.activity_user_info_repositories, null) as LinearLayout
                                 val repositoryNameText = repositoryView.findViewById(R.id.userInfoRepositoryName) as TextView
