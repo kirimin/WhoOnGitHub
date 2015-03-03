@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/userInfoLanguageCount"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
         android:textSize="@dimen/abc_text_size_medium_material"
