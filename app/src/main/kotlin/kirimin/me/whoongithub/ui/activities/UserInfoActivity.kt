@@ -39,7 +39,7 @@ public class UserInfoActivity : ActionBarActivity() {
         getSupportActionBar().setTitle(id)
 
         val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
-        val repositoryRequest = RepositoryApi.request(RequestQueueSingleton.get(getApplicationContext()), id).toList()
+        val repositoryRequest = RepositoryApi.request(RequestQueueSingleton.get(getApplicationContext()), id, 1).toList()
         subscriptions.add(Observable
                 .zip(userRequest, repositoryRequest, { user, repositories -> Pair(user, repositories) })
                 .subscribeOn(Schedulers.newThread())
@@ -76,9 +76,11 @@ public class UserInfoActivity : ActionBarActivity() {
                                 val repositoryNameText = repositoryView.findViewById(R.id.userInfoRepositoryName) as TextView
                                 val repositoryDescriptionText = repositoryView.findViewById(R.id.userInfoRepositoryDescription) as TextView
                                 val repositoryStarCountText = repositoryView.findViewById(R.id.userInfoRepositoryStarCount) as TextView
+                                val repositoryLanguageText = repositoryView.findViewById(R.id.userInfoRepositoryLanguage) as TextView
                                 repositoryNameText.setText(repo.name)
                                 repositoryDescriptionText.setText(repo.description)
                                 repositoryStarCountText.setText(repo.stargazersCount.toString())
+                                repositoryLanguageText.setText(if (!repo.language.equals("null")) repo.language else "")
                                 repositoryLayout.addView(repositoryView)
                             }
                 }, { e ->
