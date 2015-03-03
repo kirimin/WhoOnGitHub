@@ -24,7 +24,7 @@
         android:id="@+id/userInfoLanguageStarCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/star_on"
+        android:drawableLeft="@drawable/ic_star_grey600_24dp"
         android:textSize="@dimen/abc_text_size_medium_material"
         android:singleLine="true"
         android:ellipsize="end" />
