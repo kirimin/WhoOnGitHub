@@ -3,12 +3,4 @@
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_large_x2">32dp</dimen>
-
-    <dimen name="text_large5">24sp</dimen>
-    <dimen name="text_large4">22sp</dimen>
-    <dimen name="text_large3">20sp</dimen>
-    <dimen name="text_large2">18sp</dimen>
-    <dimen name="text_large">16sp</dimen>
-    <dimen name="text_medium">14sp</dimen>
-    <dimen name="text_small">12sp</dimen>
 </resources>
