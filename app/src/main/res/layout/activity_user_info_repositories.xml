@@ -10,12 +10,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/userInfoRepositoryIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/userInfoRepositoryName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
             android:textColor="@color/grey_700"
             android:textSize="@dimen/abc_text_size_medium_material"
             android:singleLine="true"
@@ -23,7 +27,7 @@
 
         <TextView
             android:id="@+id/userInfoRepositoryStarCount"
-            android:layout_width="100dp"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_star_grey600_24dp"
             android:textSize="@dimen/abc_text_size_medium_material"

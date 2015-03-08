@@ -88,12 +88,15 @@ public class UserInfoActivity : ActionBarActivity() {
                             }
                     repositories
                             .sortDescendingBy { repo -> repo.stargazersCount }
+                            .sortBy { repo -> repo.fork }
                             .forEach { repo ->
                                 val repositoryView = inflater.inflate(R.layout.activity_user_info_repositories, null) as LinearLayout
+                                val repositoryIconImage = repositoryView.findViewById(R.id.userInfoRepositoryIcon) as ImageView
                                 val repositoryNameText = repositoryView.findViewById(R.id.userInfoRepositoryName) as TextView
                                 val repositoryDescriptionText = repositoryView.findViewById(R.id.userInfoRepositoryDescription) as TextView
                                 val repositoryStarCountText = repositoryView.findViewById(R.id.userInfoRepositoryStarCount) as TextView
                                 val repositoryLanguageText = repositoryView.findViewById(R.id.userInfoRepositoryLanguage) as TextView
+                                repositoryIconImage.setImageResource(if (repo.fork) R.drawable.ic_call_split_grey600_36dp else android.R.drawable.ic_menu_sort_by_size)
                                 repositoryNameText.setText(repo.name)
                                 repositoryStarCountText.setText(repo.stargazersCount.toString())
                                 repositoryLanguageText.setText(if (!repo.language.equals("null")) repo.language else "")
