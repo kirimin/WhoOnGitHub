@@ -29,6 +29,12 @@
             android:textSize="@dimen/abc_text_size_medium_material"
             android:singleLine="true"
             android:ellipsize="end" />
+
+        <ImageView
+            android:id="@+id/userInfoRepositoryBrowser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_public_grey600_24dp" />
     </LinearLayout>
 
     <TextView

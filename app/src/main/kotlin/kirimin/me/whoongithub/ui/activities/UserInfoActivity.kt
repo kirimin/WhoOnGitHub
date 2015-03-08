@@ -19,6 +19,8 @@ import android.widget.LinearLayout
 import android.view.View
 import android.view.MenuItem
 import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
 
 public class UserInfoActivity : ActionBarActivity() {
 
@@ -96,6 +98,9 @@ public class UserInfoActivity : ActionBarActivity() {
                                 repositoryStarCountText.setText(repo.stargazersCount.toString())
                                 repositoryLanguageText.setText(if (!repo.language.equals("null")) repo.language else "")
                                 setTextAndToVisibleIfNotNull(repositoryDescriptionText, repo.description)
+                                repositoryView.findViewById(R.id.userInfoRepositoryBrowser).setOnClickListener {
+                                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(repo.htmlUrl)))
+                                }
                                 repositoryLayout.addView(repositoryView)
                             }
                 }, { e ->

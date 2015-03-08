@@ -22,6 +22,7 @@ public class RepositoryApi {
                                     json.getString("name"),
                                     json.getString("full_name"),
                                     json.getJSONObject("owner").getString("login"),
+                                    json.getString("html_url"),
                                     json.getString("description"),
                                     json.getBoolean("fork"),
                                     json.getInt("stargazers_count"),

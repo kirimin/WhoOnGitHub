@@ -5,6 +5,7 @@ class Repository(
         val name: String,
         val fullName: String,
         val ownerId: String,
+        val htmlUrl: String,
         val description: String,
         val fork: Boolean,
         val stargazersCount: Int,
