@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import rx.subscriptions.CompositeSubscription
-import butterknife.bindView
 import kirimin.me.whoongithub.network.apis.RepositoryApi
 import rx.Observable
 import android.view.LayoutInflater
@@ -22,26 +21,17 @@ import android.widget.Toast
 import android.content.Intent
 import android.net.Uri
 
+import kotlinx.android.synthetic.activity_user_info.*
+
 public class UserInfoActivity : ActionBarActivity() {
 
-    class object {
-        fun getBundle(id: String): Bundle {
+    object bundle {
+        fun new(id: String): Bundle {
             val bundle = Bundle()
             bundle.putString("id", id)
             return bundle
         }
     }
-
-    val userNameText: TextView by bindView(R.id.userInfoNameText)
-    val userIdText: TextView by bindView(R.id.userInfoIdText)
-    val locationText: TextView by bindView(R.id.userInfoLocationText)
-    val companyText: TextView by bindView(R.id.userInfoCompanyText)
-    val iconImage: ImageView by bindView(R.id.userInfoIconImage)
-    val linkText: TextView by bindView(R.id.userInfoLinkText)
-    val mailText: TextView by bindView(R.id.userInfoMailText)
-    val languageLayout: LinearLayout by bindView(R.id.userInfoLanguageLayout)
-    val repositoryLayout: LinearLayout by bindView(R.id.userInfoRepositoryLayout)
-    val parentLayout: LinearLayout by bindView(R.id.userInfoParentLayout)
 
     private val subscriptions = CompositeSubscription();
 
@@ -64,8 +54,8 @@ public class UserInfoActivity : ActionBarActivity() {
                     val user = response.first
                     val repositories = response.second
                     parentLayout.setVisibility(View.VISIBLE)
-                    userNameText.setText(user.name)
-                    userIdText.setText(user.login)
+                    nameText.setText(user.name)
+                    idText.setText(user.login)
                     setTextAndToVisibleIfNotNull(locationText, user.location)
                     setTextAndToVisibleIfNotNull(companyText, user.company)
                     setTextAndToVisibleIfNotNull(linkText, user.blog)

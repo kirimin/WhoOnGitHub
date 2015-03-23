@@ -30,15 +30,15 @@ dependencies {
     compile 'io.reactivex:rxandroid:0.24.0'
     compile 'com.mcxiaoke.volley:library:1.0.+'
     compile 'com.squareup.picasso:picasso:2.5.0'
-    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
 }
 buildscript {
-    ext.kotlin_version = '0.10.770'
+    ext.kotlin_version = '0.11.91'
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'org.jetbrains.kotlin:kotlin-android-extensions:0.11.91'
     }
 }
 repositories {

@@ -1,24 +1,22 @@
 package kirimin.me.whoongithub.ui.activities
 
 import android.support.v7.app.ActionBarActivity
-import butterknife.bindView
 import android.widget.EditText
 import kirimin.me.whoongithub.R
 import android.widget.Button
 import android.os.Bundle
 import android.content.Intent
 
-public class TopActivity : ActionBarActivity() {
+import kotlinx.android.synthetic.activity_top.*
 
-    val userNameEdit: EditText by bindView(R.id.topUserNameEdit)
-    val userNameShowButton: Button by bindView(R.id.topUserNameShowButton)
+public class TopActivity : ActionBarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top)
-        userNameShowButton.setOnClickListener {
+        topUserNameShowButton.setOnClickListener {
             val intent = Intent(getApplicationContext(), javaClass<UserInfoActivity>())
-            intent.putExtras(UserInfoActivity.getBundle(userNameEdit.getText().toString()))
+            intent.putExtras(UserInfoActivity.bundle.new(topUserNameEdit.getText().toString()))
             startActivity(intent)
         }
     }
