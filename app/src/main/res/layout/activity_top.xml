@@ -22,7 +22,7 @@
             android:layout_marginRight="@dimen/spacing_small" />
 
         <EditText
-            android:id="@+id/topUserNameEdit"
+            android:id="@+id/userNameEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,7 +33,7 @@
             android:singleLine="true" />
 
         <Button
-            android:id="@+id/topUserNameShowButton"
+            android:id="@+id/userNameShowButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="show"
