@@ -14,9 +14,9 @@ public class TopActivity : ActionBarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top)
-        topUserNameShowButton.setOnClickListener {
+        userNameShowButton.setOnClickListener {
             val intent = Intent(getApplicationContext(), javaClass<UserInfoActivity>())
-            intent.putExtras(UserInfoActivity.bundle.new(topUserNameEdit.getText().toString()))
+            intent.putExtras(UserInfoActivity.bundle.new(userNameEdit.getText().toString()))
             startActivity(intent)
         }
     }
