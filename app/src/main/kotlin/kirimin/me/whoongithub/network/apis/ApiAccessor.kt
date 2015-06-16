@@ -14,7 +14,7 @@ import rx.Observable
 import rx.Subscriber
 
 class ApiAccessor {
-    class object {
+    companion object {
 
         fun request(requestQueue: RequestQueue, url: String): Observable<JSONObject> {
             return Observable.create<JSONObject>{ subscriber ->

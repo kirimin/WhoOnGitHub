@@ -8,7 +8,7 @@ import org.json.JSONArray
 import java.util.ArrayList
 
 public class RepositoryApi {
-    public class object {
+    companion object {
 
         fun request(requestQueue: RequestQueue, id: String, page: Int): Observable<Repository> {
             return ApiAccessor.stringRequest(requestQueue, "https://api.github.com/users/" + id + "/repos?per_page=100&page=" + page)

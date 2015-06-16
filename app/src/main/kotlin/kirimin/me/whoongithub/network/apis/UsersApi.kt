@@ -6,7 +6,7 @@ import org.json.JSONObject
 import kirimin.me.whoongithub.models.User
 
 public class UsersApi {
-    public class object {
+    companion object {
 
         fun request(requestQueue: RequestQueue, id: String): Observable<User> {
             return ApiAccessor.request(requestQueue, "https://api.github.com/users/" + id)
