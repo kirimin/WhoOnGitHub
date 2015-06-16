@@ -16,7 +16,7 @@ public class TopActivity : ActionBarActivity() {
         setContentView(R.layout.activity_top)
         userNameShowButton.setOnClickListener {
             val intent = Intent(getApplicationContext(), javaClass<UserInfoActivity>())
-            intent.putExtras(UserInfoActivity.bundle.new(userNameEdit.getText().toString()))
+            intent.putExtras(UserInfoActivity.buildBundle(userNameEdit.getText().toString()))
             startActivity(intent)
         }
     }

@@ -25,8 +25,8 @@ import kotlinx.android.synthetic.activity_user_info.*
 
 public class UserInfoActivity : ActionBarActivity() {
 
-    object bundle {
-        fun new(id: String): Bundle {
+    companion object {
+        fun buildBundle(id: String): Bundle {
             val bundle = Bundle()
             bundle.putString("id", id)
             return bundle
