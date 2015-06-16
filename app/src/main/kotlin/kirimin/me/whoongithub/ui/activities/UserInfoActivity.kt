@@ -44,8 +44,8 @@ public class UserInfoActivity : ActionBarActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setHomeButtonEnabled(true)
 
-        val userRequest = UsersApi.request(RequestQueueSingleton.get(getApplicationContext()), id)
-        val repositoryRequest = RepositoryApi.request(RequestQueueSingleton.get(getApplicationContext()), id, 1).toList()
+        val userRequest = UsersApi.request(id = id, requestQueue = RequestQueueSingleton.get(getApplicationContext()))
+        val repositoryRequest = RepositoryApi.request(id = id, page = 1, requestQueue = RequestQueueSingleton.get(getApplicationContext())).toList()
         subscriptions.add(Observable
                 .zip(userRequest, repositoryRequest, { user, repositories -> Pair(user, repositories) })
                 .subscribeOn(Schedulers.newThread())
