@@ -17,6 +17,6 @@ class User (
         val publicGists: Int,
         val followers: Int,
         val following: Int,
-        val created_at: String,
-        val updated_at: String) {
+        val createdAt: String,
+        val updatedAt: String) {
 }

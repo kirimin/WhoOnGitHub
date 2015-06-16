@@ -18,17 +18,17 @@ public class RepositoryApi {
                         for (i in 0..array.length() - 1) {
                             val json = array.getJSONObject(i)
                             repositories.add(Repository(
-                                    json.getInt("id"),
-                                    json.getString("name"),
-                                    json.getString("full_name"),
-                                    json.getJSONObject("owner").getString("login"),
-                                    json.getString("html_url"),
-                                    json.getString("description"),
-                                    json.getBoolean("fork"),
-                                    json.getInt("stargazers_count"),
-                                    json.getInt("watchers_count"),
-                                    json.getString("language"),
-                                    json.getInt("forks_count")))
+                                    id = json.getInt("id"),
+                                    name = json.getString("name"),
+                                    fullName = json.getString("full_name"),
+                                    ownerId = json.getJSONObject("owner").getString("login"),
+                                    htmlUrl = json.getString("html_url"),
+                                    description = json.getString("description"),
+                                    fork = json.getBoolean("fork"),
+                                    stargazersCount = json.getInt("stargazers_count"),
+                                    watchersCount = json.getInt("watchers_count"),
+                                    language = json.getString("language"),
+                                    forks_count = json.getInt("forks_count")))
                         }
                         // 全て読み込むまで次のページのリクエストを投げてマージ
                         if (repositories.size() > 0) {
