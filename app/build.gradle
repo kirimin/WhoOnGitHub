@@ -25,20 +25,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'io.reactivex:rxandroid:0.24.0'
     compile 'com.mcxiaoke.volley:library:1.0.+'
     compile 'com.squareup.picasso:picasso:2.5.0'
 }
 buildscript {
-    ext.kotlin_version = '0.11.91'
+    ext.kotlin_version = '0.12.200'
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.jetbrains.kotlin:kotlin-android-extensions:0.11.91'
+        classpath 'org.jetbrains.kotlin:kotlin-android-extensions:0.12.200'
     }
 }
 repositories {
