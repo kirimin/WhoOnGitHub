@@ -24,9 +24,9 @@ class ApiAccessor {
                     subscriber.onNext(future.get())
                     subscriber.onCompleted()
                 } catch (e: InterruptedException) {
-                    subscriber.onError(ApiRequestException(e.getMessage()))
+                    subscriber.onError(ApiRequestException("error"))
                 } catch (e: ExecutionException) {
-                    subscriber.onError(ApiRequestException(e.getMessage()))
+                    subscriber.onError(ApiRequestException("error"))
                 }
             }
         }
@@ -39,9 +39,9 @@ class ApiAccessor {
                     subscriber.onNext(future.get())
                     subscriber.onCompleted()
                 } catch (e: InterruptedException) {
-                    subscriber.onError(ApiRequestException(e.getMessage()))
+                    subscriber.onError(ApiRequestException("error"))
                 } catch (e: ExecutionException) {
-                    subscriber.onError(ApiRequestException(e.getMessage()))
+                    subscriber.onError(ApiRequestException("error"))
                 }
             }
         }
