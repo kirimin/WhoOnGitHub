@@ -11,7 +11,6 @@ import java.util.concurrent.ExecutionException
 
 import kirimin.me.whoongithub.network.ApiRequestException
 import rx.Observable
-import rx.Subscriber
 
 class ApiAccessor {
     companion object {

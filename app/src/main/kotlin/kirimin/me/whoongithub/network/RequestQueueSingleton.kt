@@ -3,7 +3,6 @@ package kirimin.me.whoongithub.network
 import android.content.Context
 
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.Volley
 
 public object RequestQueueSingleton {
 
@@ -11,7 +10,7 @@ public object RequestQueueSingleton {
 
     public fun get(context: Context): RequestQueue {
         if (queue == null) {
-            queue = Volley.newRequestQueue(context)
+            queue = com.android.volley.toolbox.Volley.newRequestQueue(context)
         }
         return queue!!
     }
