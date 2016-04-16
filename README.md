@@ -1,3 +1,3 @@
 # WhoOnGitHub
 GitHub profile viewer written in Kotlin.  
-![screenshot](https://pbs.twimg.com/media/B_eZzTlVAAACS1j.png)
+![screenshot](https://github.com/kirimin/WhoOnGitHub/blob/master/screenshot.png)
