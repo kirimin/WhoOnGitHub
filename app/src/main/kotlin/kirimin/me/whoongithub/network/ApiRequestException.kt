@@ -1,3 +1,3 @@
 package kirimin.me.whoongithub.network
 
-public class ApiRequestException(e: String) : Exception(e)
+class ApiRequestException(e: String) : Exception(e)

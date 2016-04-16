@@ -6,7 +6,7 @@ import kirimin.me.whoongithub.models.Repository
 import org.json.JSONArray
 import java.util.ArrayList
 
-public class RepositoryApi {
+class RepositoryApi {
     companion object {
 
         fun request(requestQueue: RequestQueue, id: String, page: Int): Observable<Repository> =
@@ -30,7 +30,7 @@ public class RepositoryApi {
                                         forks_count = json.getInt("forks_count")))
                             }
                             // 全て読み込むまで次のページのリクエストを投げてマージ
-                            if (repositories.size() > 0) {
+                            if (repositories.size > 0) {
                                 Observable.merge(Observable.from(repositories), request(requestQueue, id, page + 1))
                             } else {
                                 Observable.from(repositories)

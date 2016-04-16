@@ -4,11 +4,11 @@ import android.content.Context
 
 import com.android.volley.RequestQueue
 
-public object RequestQueueSingleton {
+object RequestQueueSingleton {
 
     private var queue: RequestQueue? = null
 
-    public fun get(context: Context): RequestQueue {
+    fun get(context: Context): RequestQueue {
         if (queue == null) {
             queue = com.android.volley.toolbox.Volley.newRequestQueue(context)
         }

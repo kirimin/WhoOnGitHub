@@ -21,9 +21,9 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 
-import kotlinx.android.synthetic.activity_user_info.*
+import kotlinx.android.synthetic.main.activity_user_info.*
 
-public class UserInfoActivity : AppCompatActivity() {
+class UserInfoActivity : AppCompatActivity() {
 
     companion object {
         fun buildBundle(id: String): Bundle {
@@ -40,9 +40,9 @@ public class UserInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_info)
         val id = intent.getStringExtra("id")
         val actionBar = supportActionBar
-        actionBar.title = id
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setHomeButtonEnabled(true)
+        actionBar?.title = id
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeButtonEnabled(true)
 
         val userRequest = UsersApi.request(id = id, requestQueue = RequestQueueSingleton.get(applicationContext))
         val repositoryRequest = RepositoryApi.request(id = id, page = 1, requestQueue = RequestQueueSingleton.get(applicationContext)).toList()
@@ -50,9 +50,8 @@ public class UserInfoActivity : AppCompatActivity() {
                 .zip(userRequest, repositoryRequest, { user, repositories -> Pair(user, repositories) })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
-                    val user = response.first
-                    val repositories = response.second
+                .subscribe({
+                    val (user, repositories) = it
                     parentLayout.visibility = View.VISIBLE
                     nameText.text = user.name
                     idText.text = user.login
@@ -63,9 +62,9 @@ public class UserInfoActivity : AppCompatActivity() {
                     Picasso.with(this).load(user.avatarUrl).fit().into(iconImage)
                     val inflater = LayoutInflater.from(this);
                     repositories
-                            .filter { repo -> !repo.language.equals("null") }
-                            .groupBy { repo -> repo.language }
-                            .toList().sortedByDescending { language -> language.second.count() }
+                            .filter { !it.language.equals("null") }
+                            .groupBy { it.language }
+                            .toList().sortedByDescending { it.second.count() }
                             .forEach { language ->
                                 val languageView = inflater.inflate(R.layout.activity_user_info_language, null) as LinearLayout
                                 val languageNameText = languageView.findViewById(R.id.userInfoLanguageName) as TextView
@@ -77,8 +76,8 @@ public class UserInfoActivity : AppCompatActivity() {
                                 languageLayout.addView(languageView)
                             }
                     repositories
-                            .sortedByDescending { repo -> repo.stargazersCount }
-                            .sortBy { repo -> repo.fork }
+                            .sortedByDescending { it.stargazersCount }
+                            .sortedBy { it.fork }
                             .forEach { repo ->
                                 val repositoryView = inflater.inflate(R.layout.activity_user_info_repositories, null) as LinearLayout
                                 val repositoryIconImage = repositoryView.findViewById(R.id.userInfoRepositoryIcon) as ImageView
