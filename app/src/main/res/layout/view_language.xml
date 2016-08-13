@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="language"
+            type="kirimin.me.whoongithub._common.models.LanguageVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/userInfoLanguageName"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@{language.languageName}"
+            android:textSize="@dimen/text_large" />
+
+        <TextView
+            android:id="@+id/userInfoLanguageCount"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{language.languageCount}"
+            android:textSize="@dimen/text_large" />
+
+        <TextView
+            android:id="@+id/userInfoLanguageStarCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_star_grey600_24dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{language.languageStartCount}"
+            android:textSize="@dimen/text_large" />
+    </LinearLayout>
+</layout>

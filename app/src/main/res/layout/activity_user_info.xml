@@ -1,138 +1,161 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <data>
+        <!-- RepositoryListViewModelにバインドする -->
+        <variable
+            name="presenter"
+            type="kirimin.me.whoongithub.user_info.UserInfoPresenter" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/parentLayout"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/spacing_large"
-            android:paddingRight="@dimen/spacing_large"
-            android:paddingTop="@dimen/spacing_large"
-            android:paddingBottom="@dimen/spacing_large"
-            android:visibility="invisible">
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:title="@{presenter.user.login}"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/parentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iconImage"
-                    android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    android:layout_gravity="center_horizontal" />
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/spacing_large"
+                android:paddingLeft="@dimen/spacing_large"
+                android:paddingRight="@dimen/spacing_large"
+                android:paddingTop="@dimen/spacing_large"
+                android:visibility="@{presenter.layoutVisibility}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="@dimen/spacing_large">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/nameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/abc_text_size_title_material"
-                        android:textStyle="bold"
-                        android:textColor="@color/grey_900"
-                        android:singleLine="true"
-                        android:ellipsize="end" />
+                    <ImageView
+                        android:id="@+id/iconImage"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center_horizontal"
+                        app:imageUrl="@{presenter.user.avatar_url}" />
 
-                    <TextView
-                        android:id="@+id/idText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/grey_700"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_marginTop="@dimen/spacing_small" />
-
-                    <TextView
-                        android:id="@+id/locationText"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/grey_700"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_marginTop="@dimen/spacing_large"
-                        android:visibility="gone" />
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/spacing_large"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/companyText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/grey_700"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:visibility="gone" />
+                        <TextView
+                            android:id="@+id/nameText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{presenter.user.name}"
+                            android:textColor="@color/grey_900"
+                            android:textSize="@dimen/text_large"
+                            android:textStyle="bold"
+                            tools:text="きりみん" />
+
+                        <TextView
+                            android:id="@+id/locationText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{presenter.user.location}"
+                            android:textColor="@color/grey_700"
+                            android:textSize="@dimen/text_small"
+                            android:visibility="@{presenter.locationVisibility}"
+                            tools:text="Tokyo" />
+
+                        <TextView
+                            android:id="@+id/companyText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{presenter.user.company}"
+                            android:textColor="@color/grey_700"
+                            android:textSize="@dimen/text_small"
+                            android:visibility="gone"
+                            tools:visibility="visible"
+                            tools:text="company" />
+                    </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/linkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:autoLink="web"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{presenter.user.blog}"
+                    android:textSize="@dimen/text_large"
+                    android:visibility="@{presenter.linkVisibility}"
+                    tools:visibility="visible"
+                    tools:text="link here"/>
+
+                <TextView
+                    android:id="@+id/mailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:autoLink="email"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{presenter.user.email}"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:visibility="@{presenter.mailVisibility}"
+                    tools:visibility="visible"
+                    tools:text="mail here"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:text="Languages"
+                    android:textColor="@color/grey_900"
+                    android:textSize="@dimen/text_large2" />
+
+                <LinearLayout
+                    android:id="@+id/languageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:text="Repositories"
+                    android:textColor="@color/grey_900"
+                    android:textSize="@dimen/text_large2" />
+
+                <LinearLayout
+                    android:id="@+id/repositoryLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/linkText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/abc_text_size_medium_material"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:autoLink="web"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/mailText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/abc_text_size_medium_material"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:autoLink="email"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:visibility="gone" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="Languages"
-                android:textSize="@dimen/abc_text_size_headline_material"
-                android:textColor="@color/grey_900"
-                android:layout_marginBottom="@dimen/spacing_small" />
-
-            <LinearLayout
-                android:id="@+id/languageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="Repositories"
-                android:textSize="@dimen/abc_text_size_headline_material"
-                android:textColor="@color/grey_900"
-                android:layout_marginBottom="@dimen/spacing_small" />
-
-            <LinearLayout
-                android:id="@+id/repositoryLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
