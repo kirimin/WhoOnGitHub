@@ -15,7 +15,7 @@ import rx.subscriptions.CompositeSubscription
 
 class UserInfoPresenter(val view: UserInfoView, val repository: UserInfoRepository) {
 
-    private val subscriptions = CompositeSubscription()
+    val subscriptions = CompositeSubscription()
 
     var user = ObservableField<User>()
     var layoutVisibility = ObservableInt(View.INVISIBLE)

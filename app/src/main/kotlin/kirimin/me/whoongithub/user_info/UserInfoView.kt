@@ -30,21 +30,24 @@ interface UserInfoView {
     class UserInfoActivity : AppCompatActivity(), UserInfoView {
 
         companion object {
+
+            private val EXTRA_ID = "id"
+
             fun buildBundle(id: String): Bundle {
                 val bundle = Bundle()
-                bundle.putString("id", id)
+                bundle.putString(EXTRA_ID, id)
                 return bundle
             }
         }
 
-        lateinit var presenter: UserInfoPresenter
+        private lateinit var presenter: UserInfoPresenter
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             presenter = UserInfoPresenter(this, UserInfoRepository())
             val binding = DataBindingUtil.setContentView<ActivityUserInfoBinding>(this, R.layout.activity_user_info)
             binding.presenter = presenter
-            presenter.onCreate(intent.getStringExtra("id"))
+            presenter.onCreate(intent.getStringExtra(EXTRA_ID))
         }
 
         override fun onDestroy() {

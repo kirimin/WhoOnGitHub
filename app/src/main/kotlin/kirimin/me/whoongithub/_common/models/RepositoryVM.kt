@@ -1,6 +1,6 @@
 package kirimin.me.whoongithub._common.models
 
-class RepositoryVM(
+data class RepositoryVM(
         val iconImageResource: Int,
         val repositoryName: String,
         val starCount: String,

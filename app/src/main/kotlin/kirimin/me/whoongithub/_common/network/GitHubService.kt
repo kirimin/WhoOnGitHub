@@ -1,4 +1,4 @@
-package kirimin.me.whoongithub._common.network.apis
+package kirimin.me.whoongithub._common.network
 
 import kirimin.me.whoongithub._common.network.entities.Repository
 import kirimin.me.whoongithub._common.network.entities.User

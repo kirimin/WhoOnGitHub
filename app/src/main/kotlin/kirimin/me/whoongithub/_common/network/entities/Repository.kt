@@ -1,6 +1,6 @@
 package kirimin.me.whoongithub._common.network.entities
 
-class Repository(
+data class Repository(
         val id: Int = 0,
         val name: String = "",
         val full_name: String = "",
@@ -11,6 +11,4 @@ class Repository(
         val stargazers_count: Int = 0,
         val watchers_count: Int = 0,
         val language: String? = null,
-        val forks_count: Int = 0) {
-
-}
+        val forks_count: Int = 0)
