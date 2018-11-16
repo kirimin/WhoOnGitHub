@@ -1,4 +1,4 @@
-package kirimin.me.whoongithub._common.models
+package kirimin.me.whoongithub.common.models
 
 data class LanguageVM(
         val languageName: String,

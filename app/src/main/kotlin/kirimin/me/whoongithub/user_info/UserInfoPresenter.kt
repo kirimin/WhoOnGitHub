@@ -5,10 +5,10 @@ import android.databinding.ObservableInt
 import android.view.View
 import kirimin.me.whoongithub.BuildConfig
 import kirimin.me.whoongithub.R
-import kirimin.me.whoongithub._common.models.LanguageVM
-import kirimin.me.whoongithub._common.models.RepositoryVM
-import kirimin.me.whoongithub._common.network.entities.Repository
-import kirimin.me.whoongithub._common.network.entities.User
+import kirimin.me.whoongithub.common.models.LanguageVM
+import kirimin.me.whoongithub.common.models.RepositoryVM
+import kirimin.me.whoongithub.common.network.entities.Repository
+import kirimin.me.whoongithub.common.network.entities.User
 import rx.Observable
 import rx.Single
 import rx.subscriptions.CompositeSubscription
@@ -34,19 +34,19 @@ class UserInfoPresenter(val view: UserInfoView, val repository: UserInfoReposito
             user.set(pair.first)
             val repositories = pair.second
             layoutVisibility.set(View.VISIBLE)
-            user.get().location?.let {
+            user.get()?.location?.let {
                 locationVisibility.set(View.VISIBLE)
             }
-            user.get().company?.let {
+            user.get()?.company?.let {
                 companyVisibility.set(View.VISIBLE)
             }
-            user.get().blog?.let {
+            user.get()?.blog?.let {
                 linkVisibility.set(View.VISIBLE)
             }
-            user.get().email?.let {
+            user.get()?.email?.let {
                 mailVisibility.set(View.VISIBLE)
             }
-            user.get().avatar_url?.let {
+            user.get()?.avatar_url?.let {
                 avatarVisibility.set(View.VISIBLE)
             }
             getLanguages(repositories).forEach {
@@ -61,7 +61,7 @@ class UserInfoPresenter(val view: UserInfoView, val repository: UserInfoReposito
                         repositoryName = it.name,
                         starCount = it.stargazers_count.toString(),
                         language = it.language ?: "",
-                        description = it.description,
+                        description = it.description ?: "",
                         htmlUrl = it.html_url ?: "")
                 view.addRepository(repository)
             }

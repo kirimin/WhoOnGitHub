@@ -1,4 +1,4 @@
-package kirimin.me.whoongithub._common.utils
+package kirimin.me.whoongithub.common.utils
 
 import android.databinding.BindingAdapter
 import android.widget.ImageView

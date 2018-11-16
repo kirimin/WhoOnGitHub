@@ -5,7 +5,7 @@
 
         <variable
             name="language"
-            type="kirimin.me.whoongithub._common.models.LanguageVM" />
+            type="kirimin.me.whoongithub.common.models.LanguageVM" />
     </data>
 
     <LinearLayout

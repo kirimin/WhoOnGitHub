@@ -11,8 +11,8 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import kirimin.me.whoongithub.databinding.ActivityUserInfoBinding
 import kirimin.me.whoongithub.databinding.ViewLanguageBinding
-import kirimin.me.whoongithub._common.models.LanguageVM
-import kirimin.me.whoongithub._common.models.RepositoryVM
+import kirimin.me.whoongithub.common.models.LanguageVM
+import kirimin.me.whoongithub.common.models.RepositoryVM
 import kirimin.me.whoongithub.databinding.ViewRepositoryBinding
 
 import kotlinx.android.synthetic.main.activity_user_info.*

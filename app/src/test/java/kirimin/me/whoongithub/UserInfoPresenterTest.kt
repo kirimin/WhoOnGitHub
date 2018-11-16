@@ -2,10 +2,10 @@ package kirimin.me.whoongithub
 
 import android.view.View
 import com.nhaarman.mockito_kotlin.*
-import kirimin.me.whoongithub._common.models.LanguageVM
-import kirimin.me.whoongithub._common.models.RepositoryVM
-import kirimin.me.whoongithub._common.network.entities.Repository
-import kirimin.me.whoongithub._common.network.entities.User
+import kirimin.me.whoongithub.common.models.LanguageVM
+import kirimin.me.whoongithub.common.models.RepositoryVM
+import kirimin.me.whoongithub.common.network.entities.Repository
+import kirimin.me.whoongithub.common.network.entities.User
 import kirimin.me.whoongithub.user_info.UserInfoPresenter
 import kirimin.me.whoongithub.user_info.UserInfoRepository
 import kirimin.me.whoongithub.user_info.UserInfoView

@@ -6,7 +6,7 @@
 
         <variable
             name="repository"
-            type="kirimin.me.whoongithub._common.models.RepositoryVM" />
+            type="kirimin.me.whoongithub.common.models.RepositoryVM" />
     </data>
 
     <LinearLayout

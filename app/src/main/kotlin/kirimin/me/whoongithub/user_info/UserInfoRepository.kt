@@ -1,8 +1,8 @@
 package kirimin.me.whoongithub.user_info
 
-import kirimin.me.whoongithub._common.network.GitHubService
-import kirimin.me.whoongithub._common.network.entities.Repository
-import kirimin.me.whoongithub._common.network.entities.User
+import kirimin.me.whoongithub.common.network.GitHubService
+import kirimin.me.whoongithub.common.network.entities.Repository
+import kirimin.me.whoongithub.common.network.entities.User
 import rx.Observable
 import rx.Single
 import rx.android.schedulers.AndroidSchedulers

@@ -1,7 +1,7 @@
-package kirimin.me.whoongithub._common.network
+package kirimin.me.whoongithub.common.network
 
-import kirimin.me.whoongithub._common.network.entities.Repository
-import kirimin.me.whoongithub._common.network.entities.User
+import kirimin.me.whoongithub.common.network.entities.Repository
+import kirimin.me.whoongithub.common.network.entities.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

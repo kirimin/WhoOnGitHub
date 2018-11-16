@@ -1,4 +1,4 @@
-package kirimin.me.whoongithub._common.network.entities
+package kirimin.me.whoongithub.common.network.entities
 
 data class User (
         val login: String = "",
