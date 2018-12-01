@@ -44,6 +44,7 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava:2.2.0")
     testImplementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.10")
     testImplementation("junit:junit:4.12")
+    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0")
     androidTestImplementation("com.android.support.test:runner:1.0.2")
     androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
 }
